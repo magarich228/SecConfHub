@@ -56,7 +56,7 @@ class ExcelToPostgresLoader(string connectionString)
                     
             foreach (var item in row.ItemArray)
             {
-                writer.Write(item.ToString());
+                writer.Write(item?.ToString());
             }
         }
                 
