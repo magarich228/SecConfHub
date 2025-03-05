@@ -5,9 +5,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrator", "Migrator", "{19546D49-B796-4EDE-83F6-0A5F294BBDBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecConfHub.Pg.Migrator", "Migrator\SecConfHub.Pg.Migrator\SecConfHub.Pg.Migrator.csproj", "{782DAE42-1062-4CE4-8F98-3F4118B2CBFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{782DAE42-1062-4CE4-8F98-3F4118B2CBFE} = {19546D49-B796-4EDE-83F6-0A5F294BBDBF}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{782DAE42-1062-4CE4-8F98-3F4118B2CBFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{782DAE42-1062-4CE4-8F98-3F4118B2CBFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{782DAE42-1062-4CE4-8F98-3F4118B2CBFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{782DAE42-1062-4CE4-8F98-3F4118B2CBFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
