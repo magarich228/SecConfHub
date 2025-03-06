@@ -11,5 +11,6 @@ namespace SecConfHub.Desktop.Models
         public int Days { get; set; }
         public Bitmap Photo { get; set; } = null!;
         public string City { get; set; } = null!;
+        public string EventTypeName { get; set; } = null!;
     }
 }

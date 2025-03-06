@@ -111,9 +111,12 @@ create table if not exists public.event
 	days int not null default 1,
 	city_id int not null,
     photo_path varchar,
+	event_type_id int not null,
 	
 	constraint days_check check (days > 0),
 	foreign key (city_id) references public.city (id)
+		on delete cascade,
+	foreign key (event_type_id) references public.event_types (id)
 		on delete cascade
 );
 

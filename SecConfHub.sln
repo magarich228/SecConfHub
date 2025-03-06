@@ -16,7 +16,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E3F553C6-FAB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecConfHub.Infrastructure", "src\SecConfHub.Infrastructure\SecConfHub.Infrastructure.csproj", "{C6044F59-31B4-481B-B90C-347EBAA7FF39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecConfHub.Desktop", "src\SecConfHub.Desktop\SecConfHub.Desktop.csproj", "{69E1ABF9-09A1-49B8-B746-00B58B66FF51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecConfHub.Desktop", "src\SecConfHub.Desktop\SecConfHub.Desktop.csproj", "{69E1ABF9-09A1-49B8-B746-00B58B66FF51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistent", "Persistent", "{E5A42A60-B9B3-443D-9EDC-8F8A8FAB4B7E}"
+	ProjectSection(SolutionItems) = preProject
+		PersistentData\default.xlsx = PersistentData\default.xlsx
+		PersistentData\init-db-schema.sql = PersistentData\init-db-schema.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

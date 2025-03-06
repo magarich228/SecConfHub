@@ -19,5 +19,8 @@ public partial class EventType
     public string Name { get; set; } = null!;
 
     [InverseProperty("EventType")]
+    public virtual ICollection<Event> Events { get; set; } = new List<Event>();
+
+    [InverseProperty("EventType")]
     public virtual ICollection<Moderator> Moderators { get; set; } = new List<Moderator>();
 }

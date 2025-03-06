@@ -18,7 +18,7 @@
 	<Grid ShowGridLines="True">
 
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="200"/>
+			<ColumnDefinition Width="325"/>
 			<ColumnDefinition/>
 			<ColumnDefinition Width="100"/>
 		</Grid.ColumnDefinitions>
@@ -30,9 +30,27 @@
 
 		<Label Grid.ColumnSpan="3"
 			   HorizontalAlignment="Center"
-			   VerticalAlignment="Center">
+			   VerticalAlignment="Center"
+         FontSize="30">
 			Мероприятия
 		</Label>
+
+    <StackPanel Grid.Row="1"
+                Margin="25,0,0,0">
+      
+      <Label>Дата начала от:</Label>
+      <DatePicker Grid.Row="1"
+                  SelectedDate="{Binding StartDateStart}"/>
+      
+      <Label Margin="0,10,0,0">Дата начала до:</Label>
+      <DatePicker Grid.Row="1"
+                  SelectedDate="{Binding StartDateEnd}"/>
+
+      <ComboBox PlaceholderText="Тип мероприятия"
+                Margin="0,10,0,0"
+                ItemsSource="{Binding EventTypeNames}"
+                SelectedItem="{Binding EventTypeNameFilter}"/>
+    </StackPanel>
 		
 		<ScrollViewer Grid.Column="1"
 					  Grid.Row="1"
@@ -43,7 +61,7 @@
 					<ListBox.ItemTemplate>
 						<DataTemplate>
 							<Grid ColumnDefinitions="200,10,*"
-								  RowDefinitions="50,50,50,10">
+										RowDefinitions="50,50,50,10">
 								
 								<Image Source="{Binding Photo}"
 									   Grid.RowSpan="3"
@@ -61,6 +79,8 @@
 									<TextBlock Text="{Binding Days, StringFormat='кол-во дней: {0}'}"/>
 									<TextBlock Text="{Binding City, StringFormat='город: {0}'}"
 											   Margin="10,0,0,0"/>
+									<TextBlock Text="{Binding EventTypeName}"
+														 Margin="10,0,0,0"/>
 								</StackPanel>
 								
 							</Grid>
@@ -70,7 +90,11 @@
 
 			</StackPanel>
 		</ScrollViewer>
-
+    
+    <Button Content="Вход"
+            Grid.Column="2"
+            HorizontalAlignment="Center"/>
+    
 	</Grid>
 
 </Window>

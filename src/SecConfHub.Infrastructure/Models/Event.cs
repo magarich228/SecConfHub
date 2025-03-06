@@ -28,10 +28,17 @@ public partial class Event
     [Column("photo_path", TypeName = "character varying")]
     public string? PhotoPath { get; set; }
 
+    [Column("event_type_id")]
+    public int? EventTypeId { get; set; }
+
     [InverseProperty("Event")]
     public virtual ICollection<Activity> Activities { get; set; } = new List<Activity>();
 
     [ForeignKey("CityId")]
     [InverseProperty("Events")]
     public virtual City City { get; set; } = null!;
+
+    [ForeignKey("EventTypeId")]
+    [InverseProperty("Events")]
+    public virtual EventType? EventType { get; set; }
 }
