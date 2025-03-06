@@ -32,6 +32,12 @@ public partial class User
     [Column("photo_path", TypeName = "character varying")]
     public string? PhotoPath { get; set; }
 
+    [Column("role_discriminator")]
+    public string Role { get; set; } = null!;
+
+    [Column("gender")]
+    public string Gender { get; set; } = null!;
+
     [InverseProperty("Winner")]
     public virtual ICollection<Activity> Activities { get; set; } = new List<Activity>();
 

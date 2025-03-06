@@ -24,7 +24,8 @@
 			<Label>IdNumber</Label>
 			<TextBox Text="{Binding IdNumber}"/>
 			<Label>Password</Label>
-			<TextBox Text="{Binding Password}"/>
+			<TextBox Text="{Binding Password}"
+					 PasswordChar="*"/>
 			<StackPanel TextElement.Foreground="Red">
 				<TextBlock Text="{Binding ErrorMessage}"/>
 			</StackPanel>

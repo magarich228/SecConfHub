@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
 using SecConfHub.Infrastructure.Context;
+using SecConfHub.Infrastructure.Models;
 using System;
 using System.Linq;
 
@@ -33,25 +34,32 @@ namespace SecConfHub.Desktop.ViewModels
         //public string Password { get; set; } = null!;
         //public string ErrorMessage { get; set; } = null!;
 
-        public bool TryAuth()
+        public bool TryAuth(out User? user)
         {
             if (!int.TryParse(IdNumber, out var id))
             {
                 ErrorMessage = "Некорректный формат идентификатора";
-                IdNumber = string.Empty;
+
+                user = null;
 
                 return false;
             }
 
-            if (!_db.Users.Any(u => u.Id == id &&
-                                    u.Pass == Password))
+            var searchedUser = _db.Users.FirstOrDefault(u => u.Id == id &&
+                                    u.Pass == Password);
+
+            if (searchedUser is null)
             {
                 ErrorMessage = "Неверный идентификатор или пароль";
+
+                user = null;
 
                 return false;
             }
 
             ErrorMessage = string.Empty;
+
+            user = searchedUser;
 
             return true;
         }

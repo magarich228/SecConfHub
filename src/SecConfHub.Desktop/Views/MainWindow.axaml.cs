@@ -27,6 +27,7 @@ namespace SecConfHub.Desktop.Views
         {
             var authWindow = _services.GetRequiredService<AuthWindow>();
 
+            authWindow.SizeTo(this);
             authWindow.Show();
 
             this.Close();

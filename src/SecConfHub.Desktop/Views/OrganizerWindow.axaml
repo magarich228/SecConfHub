@@ -1,0 +1,99 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:SecConfHub.Desktop.ViewModels"
+		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="SecConfHub.Desktop.OrganizerWindow"
+		x:DataType="vm:OrganizerViewModel"
+        Title="OrganizerWindow">
+
+	<Design.DataContext>
+		<vm:AuthViewModel/>
+	</Design.DataContext>
+
+	<Grid ColumnDefinitions="*,250,300,250,*"
+		  RowDefinitions="*,150,350,200,*"
+		  ShowGridLines="True">
+
+		<Label Content="Окно организатора"
+			   Grid.Column="2"
+			   Grid.Row="1"
+			   HorizontalAlignment="Center"
+			   VerticalAlignment="Bottom"
+			   Margin="0,20"
+			   FontWeight="Bold"
+			   FontSize="25"/>
+
+		<Border Grid.Row="1"
+				Grid.ColumnSpan="5"
+				BorderThickness="0,2,0,0"
+				BorderBrush="Black"
+				VerticalAlignment="Bottom"/>
+
+		<Image Grid.Column="1"
+			   Grid.Row="2"
+			   Source="{Binding Image, FallbackValue='Assets/default.jpg'}"/>
+
+		<StackPanel Grid.Column="2"
+					   Grid.Row="2"
+					Spacing="10">
+			<TextBlock Text="{Binding Greeting, StringFormat='Добрый {0}!'}"
+					   TextAlignment="Center"/>
+			<TextBlock Text="{Binding Appeal}"
+					   TextAlignment="Center"/>
+			
+			<Button Width="250"
+					Height="50"
+					HorizontalAlignment="Center"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					Content="Мероприятия"/>
+			
+			<Button Width="250"
+					Height="50"
+					HorizontalAlignment="Center"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					Content="Участники"/>
+			
+			<Button Width="250"
+					Height="50"
+					HorizontalAlignment="Center"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					Content="Жюри"/>
+			
+		</StackPanel>
+		
+		<Button Width="120"
+				Height="60"
+				Grid.Column="1"
+				Grid.Row="2"
+				VerticalAlignment="Bottom"
+				HorizontalAlignment="Left"
+				VerticalContentAlignment="Center"
+				HorizontalContentAlignment="Center"
+				Content="Выход"
+				Click="ExitButton_Click"/>
+		
+		<Button Width="120"
+				Height="60"
+				Grid.Column="1"
+				Grid.Row="2"
+				VerticalAlignment="Bottom"
+				HorizontalAlignment="Right"
+				VerticalContentAlignment="Center"
+				HorizontalContentAlignment="Center"
+				Content="Мой профиль"/>
+		
+		<Button Height="100" 
+				Content="Регистрация жюри/модератора"
+				Grid.Column="3"
+				Grid.Row="2"
+				VerticalContentAlignment="Center"
+				HorizontalContentAlignment="Center"
+				Click="RegisterButton_Click"/>
+		
+	</Grid>
+</Window>

@@ -4,6 +4,7 @@ using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using SecConfHub.Desktop.Services;
 using SecConfHub.Desktop.ViewModels;
 using SecConfHub.Desktop.Views;
 using SecConfHub.Infrastructure.Context;
@@ -38,6 +39,8 @@ namespace SecConfHub.Desktop
         {
             ServiceCollection services = new ServiceCollection();
 
+            services.AddSingleton<UserContainer>();
+
             services.AddDbContext<ConferenceDbContext>(optionsBuilder =>
                 optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=SecConfHub;Username=postgres;Password=yougifted"));
 
@@ -46,6 +49,12 @@ namespace SecConfHub.Desktop
 
             services.AddTransient<AuthViewModel>();
             services.AddTransient<AuthWindow>();
+
+            services.AddTransient<OrganizerViewModel>();
+            services.AddTransient<OrganizerWindow>();
+
+            services.AddTransient<ModeratorsJouriorsRegistrationViewModel>();
+            services.AddTransient<ModeratorsJouriousRegistrationWindow>();
 
             return services.BuildServiceProvider();
         }
