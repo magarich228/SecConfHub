@@ -76,9 +76,6 @@
 								<StackPanel Orientation="Horizontal"
 											Grid.Column="2" 
 											Grid.Row="2">
-									<TextBlock Text="{Binding Days, StringFormat='кол-во дней: {0}'}"/>
-									<TextBlock Text="{Binding City, StringFormat='город: {0}'}"
-											   Margin="10,0,0,0"/>
 									<TextBlock Text="{Binding EventTypeName}"
 														 Margin="10,0,0,0"/>
 								</StackPanel>
@@ -93,7 +90,8 @@
     
     <Button Content="Вход"
             Grid.Column="2"
-            HorizontalAlignment="Center"/>
+            HorizontalAlignment="Center"
+			Click="GoToAuth_Click"/>
     
 	</Grid>
 

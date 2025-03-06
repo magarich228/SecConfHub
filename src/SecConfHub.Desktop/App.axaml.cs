@@ -1,11 +1,13 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using SecConfHub.Desktop.ViewModels;
 using SecConfHub.Desktop.Views;
 using SecConfHub.Infrastructure.Context;
+using System;
 
 namespace SecConfHub.Desktop
 {
@@ -18,28 +20,34 @@ namespace SecConfHub.Desktop
 
         public override void OnFrameworkInitializationCompleted()
         {
-            var db = GetDbContext();
+            var serviceProvider = ConfigureServices();
 
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 // Line below is needed to remove Avalonia data validation.
                 // Without this line you will get duplicate validations from both Avalonia and CT
                 BindingPlugins.DataValidators.RemoveAt(0);
-                desktop.MainWindow = new MainWindow
-                {
-                    DataContext = new MainWindowViewModel(db),
-                };
+
+                desktop.MainWindow = serviceProvider.GetRequiredService<MainWindow>();
             }
 
             base.OnFrameworkInitializationCompleted();
         }
 
-        private ConferenceDbContext GetDbContext()
+        private IServiceProvider ConfigureServices()
         {
-            var options = new Microsoft.EntityFrameworkCore.DbContextOptions<ConferenceDbContext>();
-            var db = new ConferenceDbContext(options);
+            ServiceCollection services = new ServiceCollection();
 
-            return db;
+            services.AddDbContext<ConferenceDbContext>(optionsBuilder =>
+                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=SecConfHub;Username=postgres;Password=yougifted"));
+
+            services.AddTransient<MainWindowViewModel>();
+            services.AddTransient<MainWindow>();
+
+            services.AddTransient<AuthViewModel>();
+            services.AddTransient<AuthWindow>();
+
+            return services.BuildServiceProvider();
         }
     }
 }

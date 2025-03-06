@@ -1,0 +1,50 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="using:SecConfHub.Desktop.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="SecConfHub.Desktop.AuthWindow"
+		x:DataType="vm:AuthViewModel"
+        Title="Auth">
+
+	<Design.DataContext>
+		<vm:AuthViewModel/>
+	</Design.DataContext>
+
+	<StackPanel HorizontalAlignment="Center"
+				VerticalAlignment="Center"
+				Spacing="20">
+
+		<TextBlock Text="Авторизация"
+				   FontSize="30"
+				   TextAlignment="Center"/>
+
+		<StackPanel Width="250">
+			<Label>IdNumber</Label>
+			<TextBox Text="{Binding IdNumber}"/>
+			<Label>Password</Label>
+			<TextBox Text="{Binding Password}"/>
+			<StackPanel TextElement.Foreground="Red">
+				<TextBlock Text="{Binding ErrorMessage}"/>
+			</StackPanel>
+		</StackPanel>
+
+		<StackPanel HorizontalAlignment="Center">
+			<TextBlock Text="Капча"/>
+		</StackPanel>
+
+		<StackPanel HorizontalAlignment="Center"
+					Spacing="10">
+			<Button Content="Войти" 
+					Width="100"
+					HorizontalContentAlignment="Center"
+					Click="SubmitButton_Click"/>
+			<Button Content="Назад" 
+					Width="100"
+					HorizontalContentAlignment="Center"
+					Click="GoToBack_Click"/>
+		</StackPanel>
+
+	</StackPanel>
+</Window>

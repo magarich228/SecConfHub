@@ -1,6 +1,7 @@
 ﻿using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using SecConfHub.Desktop.Models;
 using SecConfHub.Infrastructure.Context;
 using System;
@@ -16,11 +17,14 @@ namespace SecConfHub.Desktop.ViewModels
         private readonly ConferenceDbContext _db;
         private const string EventTypeNameStubValue = "Все";
 
-        public MainWindowViewModel() { }
-
-        public MainWindowViewModel(ConferenceDbContext db)
+        public MainWindowViewModel()
         {
-            _db = db;
+
+        }
+
+        public MainWindowViewModel(IServiceProvider serviceProvider)
+        {
+            _db = serviceProvider.GetRequiredService<ConferenceDbContext>();
 
             var events = _db.Events
                 .AsNoTracking()
@@ -79,7 +83,7 @@ namespace SecConfHub.Desktop.ViewModels
                     .Include(e => e.City)
                     .Where(e => e.StartDate.ToDateTime(TimeOnly.MinValue).ToUniversalTime() >= StartDateStart.UtcDateTime &&
                                 e.StartDate.ToDateTime(TimeOnly.MinValue).ToUniversalTime() <= StartDateEnd.UtcDateTime)
-                    .Where(e => EventTypeNameFilter == EventTypeNameStubValue || 
+                    .Where(e => EventTypeNameFilter == EventTypeNameStubValue ||
                                 e.EventType!.Name == EventTypeNameFilter)
                     .Select(e => new EventDto
                     {
