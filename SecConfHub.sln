@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{DD43ED53-481F-4C88-8DBB-707931C1580C}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -7,23 +10,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrator", "Migrator", "{19546D49-B796-4EDE-83F6-0A5F294BBDBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecConfHub.Pg.Migrator", "Migrator\SecConfHub.Pg.Migrator\SecConfHub.Pg.Migrator.csproj", "{782DAE42-1062-4CE4-8F98-3F4118B2CBFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecConfHub.Pg.Migrator", "Migrator\SecConfHub.Pg.Migrator\SecConfHub.Pg.Migrator.csproj", "{782DAE42-1062-4CE4-8F98-3F4118B2CBFE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E3F553C6-FAB0-4CEF-98F9-3F6E20938188}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecConfHub.Infrastructure", "src\SecConfHub.Infrastructure\SecConfHub.Infrastructure.csproj", "{C6044F59-31B4-481B-B90C-347EBAA7FF39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecConfHub.Infrastructure", "src\SecConfHub.Infrastructure\SecConfHub.Infrastructure.csproj", "{C6044F59-31B4-481B-B90C-347EBAA7FF39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecConfHub.Desktop", "src\SecConfHub.Desktop\SecConfHub.Desktop.csproj", "{3AF29070-5A61-4D5D-9B7D-E6D6D0D74F2B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecConfHub.Desktop", "src\SecConfHub.Desktop\SecConfHub.Desktop.csproj", "{69E1ABF9-09A1-49B8-B746-00B58B66FF51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{782DAE42-1062-4CE4-8F98-3F4118B2CBFE} = {19546D49-B796-4EDE-83F6-0A5F294BBDBF}
-		{C6044F59-31B4-481B-B90C-347EBAA7FF39} = {E3F553C6-FAB0-4CEF-98F9-3F6E20938188}
-		{3AF29070-5A61-4D5D-9B7D-E6D6D0D74F2B} = {E3F553C6-FAB0-4CEF-98F9-3F6E20938188}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{782DAE42-1062-4CE4-8F98-3F4118B2CBFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -34,9 +32,20 @@ Global
 		{C6044F59-31B4-481B-B90C-347EBAA7FF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6044F59-31B4-481B-B90C-347EBAA7FF39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6044F59-31B4-481B-B90C-347EBAA7FF39}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3AF29070-5A61-4D5D-9B7D-E6D6D0D74F2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3AF29070-5A61-4D5D-9B7D-E6D6D0D74F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3AF29070-5A61-4D5D-9B7D-E6D6D0D74F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3AF29070-5A61-4D5D-9B7D-E6D6D0D74F2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69E1ABF9-09A1-49B8-B746-00B58B66FF51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E1ABF9-09A1-49B8-B746-00B58B66FF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E1ABF9-09A1-49B8-B746-00B58B66FF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E1ABF9-09A1-49B8-B746-00B58B66FF51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{782DAE42-1062-4CE4-8F98-3F4118B2CBFE} = {19546D49-B796-4EDE-83F6-0A5F294BBDBF}
+		{C6044F59-31B4-481B-B90C-347EBAA7FF39} = {E3F553C6-FAB0-4CEF-98F9-3F6E20938188}
+		{69E1ABF9-09A1-49B8-B746-00B58B66FF51} = {E3F553C6-FAB0-4CEF-98F9-3F6E20938188}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4239F7B6-A5F1-4C37-B0B6-B88A54A6DCAC}
 	EndGlobalSection
 EndGlobal

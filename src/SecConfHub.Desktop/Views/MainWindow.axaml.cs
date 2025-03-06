@@ -1,11 +1,12 @@
 using Avalonia.Controls;
 
-namespace SecConfHub.Desktop.Views;
-
-public partial class MainWindow : Window
+namespace SecConfHub.Desktop.Views
 {
-    public MainWindow()
+    public partial class MainWindow : Window
     {
-        InitializeComponent();
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
     }
 }

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SecConfHub.Infrastructure.Models;
 
 namespace SecConfHub.Infrastructure.Context;
 
-public partial class MyDbContext(DbContextOptions<MyDbContext> options) : DbContext(options)
+public partial class ConferenceDbContext(DbContextOptions<ConferenceDbContext> options) : DbContext(options)
 {
     public virtual DbSet<Activity> Activities { get; set; } = null!;
 
