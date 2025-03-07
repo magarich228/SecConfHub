@@ -42,7 +42,7 @@ namespace SecConfHub.Desktop
             services.AddSingleton<UserContainer>();
 
             services.AddDbContext<ConferenceDbContext>(optionsBuilder =>
-                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=SecConfHub;Username=postgres;Password=yougifted"));
+                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=SecConfHub;Username=postgres;Password=postgres"));
 
             services.AddTransient<MainWindowViewModel>();
             services.AddTransient<MainWindow>();
