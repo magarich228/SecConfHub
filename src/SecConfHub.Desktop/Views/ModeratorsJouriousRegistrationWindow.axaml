@@ -3,14 +3,168 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="using:SecConfHub.Desktop.ViewModels"
-		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		mc:Ignorable="d" d:DesignWidth="1500" d:DesignHeight="700"
         x:Class="SecConfHub.Desktop.ModeratorsJouriousRegistrationWindow"
         x:DataType="vm:ModeratorsJouriorsRegistrationViewModel"
 		Title="ModeratorsJouriousRegistrationWindow">
-	
+
 	<Design.DataContext>
 		<vm:ModeratorsJouriorsRegistrationViewModel/>
 	</Design.DataContext>
-	
-	
+
+	<Grid ColumnDefinitions="*,110,300,300,300,*"
+		  RowDefinitions="*,50,400,*"
+		  ShowGridLines="False">
+
+		<Label Grid.Row="1"
+			   Grid.Column="1"
+			   Grid.ColumnSpan="4"
+			   HorizontalAlignment="Center"
+			   FontSize="25"
+			   FontWeight="Bold">
+			Регистрация жюри/модератора
+		</Label>
+
+		<StackPanel Grid.Column="1" 
+					Grid.Row="2"
+					Margin="0,10,10,0"
+					Spacing="32">
+
+			<TextBlock HorizontalAlignment="Right" 
+					   Text="Id Number:"/>
+			
+			<TextBlock HorizontalAlignment="Right" 
+					   Text="ФИО:"/>
+			
+			<TextBlock HorizontalAlignment="Right" 
+					   Text="Пол:"/>
+			
+			<TextBlock HorizontalAlignment="Right" 
+					   Text="Роль:"/>
+			
+			<TextBlock HorizontalAlignment="Right" 
+					   Text="Email:"/>
+			
+			<TextBlock HorizontalAlignment="Right" 
+					   Text="Телефон:"/>
+			
+			<TextBlock HorizontalAlignment="Right" 
+					   Text="Направление:"/>
+
+			<TextBlock HorizontalAlignment="Right"
+					   Text=""/>
+
+			<TextBlock HorizontalAlignment="Right"
+					   Text="Мероприятие:"/>
+			
+		</StackPanel>
+
+		<StackPanel Grid.Column="2"
+					Grid.Row="2"
+					Spacing="18">
+			
+			<TextBox Focusable="False"
+					 Text="{Binding NewUser.Id}"/>
+			
+			<TextBox Text="{Binding NewUser.FullName}"/>
+			
+			<ComboBox Width="300"
+					  ItemsSource="{Binding Genders}"
+					  SelectedItem="{Binding NewUser.Gender}"/>
+
+			<ComboBox Width="300"
+					  ItemsSource="{Binding Roles}"
+					  SelectedItem="{Binding NewUser.Role}"/>
+			
+			<TextBox Text="{Binding NewUser.Email}"/>
+
+			<MaskedTextBox Mask="+7 (000)-000-00-00" 
+						   Width="300"
+						   Text="{Binding NewUser.Phone}"/>
+
+			<ComboBox Width="300"
+					  ItemsSource="{Binding ActivityDirections}"
+					  SelectedItem="{Binding NewUser.ActivityDirection}"/>
+
+			<StackPanel Orientation="Horizontal"
+						HorizontalAlignment="Right">
+				<CheckBox VerticalAlignment="Center"
+						  IsChecked="{Binding EventBinding}"/>
+				<TextBlock Text="Привязать к мероприятию"
+						   VerticalAlignment="Center"/>
+			</StackPanel>
+
+			<ComboBox Width="300"
+					  IsEnabled="{Binding EventBinding}"
+					  ItemsSource="{Binding EventNames}"/>
+			
+		</StackPanel>
+
+		<StackPanel Margin="0,10,10,0"
+					Grid.Column="3"
+					Grid.Row="2"
+					VerticalAlignment="Bottom"
+					Spacing="18">
+			
+			<TextBlock HorizontalAlignment="Right"
+					   Text="Пароль:"/>
+			
+			<TextBlock HorizontalAlignment="Right"
+					   Text="Повтор пароля:"/>
+			
+			<CheckBox HorizontalAlignment="Right"
+					  IsChecked="{Binding ShowConfirmPass}"
+					  />
+			
+		</StackPanel>
+		
+		
+		<StackPanel Margin="0,10,10,8"
+					Grid.Column="4"
+					Grid.Row="2"
+					Spacing="10"
+					VerticalAlignment="Bottom">
+			
+			<Image Source="/Assets/default.jpg"
+				   Margin="0,35"/>
+			
+			<TextBox Text="{Binding NewUser.Password}" 
+					 PasswordChar="*"/>
+			
+			<TextBox Text="{Binding NewUser.ConfirmPassword}" 
+					 PasswordChar="{Binding ConfirmPassChar}"/>
+			
+			<TextBlock Text="Видимый пароль"/>
+			
+		</StackPanel>
+
+		<StackPanel Grid.Column="4"
+					Grid.Row="3"
+					Orientation="Horizontal"
+					HorizontalAlignment="Center"
+					Margin="0,10"
+					Spacing="30">
+			
+			<Button Content="Ок"
+					VerticalAlignment="Top"
+					Width="100"
+					HorizontalContentAlignment="Center"
+					Click="SubmitUserButton_Click"/>
+			<Button Content="Отмена"
+					VerticalAlignment="Top"
+					Width="100"
+					HorizontalContentAlignment="Center"
+					Click="CancelButton_Click"/>
+			
+		</StackPanel>
+
+		<TextBlock Text="{Binding Errors}"
+				   Grid.Column="4"
+				   Grid.Row="3"
+				   HorizontalAlignment="Center"
+				   TextElement.Foreground="Red"
+				   Margin="0,50,0,0"/>
+
+	</Grid>
+
 </Window>

@@ -13,8 +13,7 @@
 	</Design.DataContext>
 
 	<Grid ColumnDefinitions="*,250,300,250,*"
-		  RowDefinitions="*,150,350,200,*"
-		  ShowGridLines="True">
+		  RowDefinitions="*,150,350,200,*">
 
 		<Label Content="Окно организатора"
 			   Grid.Column="2"

@@ -39,6 +39,11 @@ public partial class OrganizerWindow : Window
 
     private void RegisterButton_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
+        var window = _serviceProvider.GetRequiredService<ModeratorsJouriousRegistrationWindow>();
 
+        window.SizeTo(this);
+        window.Show();
+
+        this.Close();
     }
 }

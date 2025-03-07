@@ -26,16 +26,19 @@ public partial class User
     [Column("phone")]
     public string Phone { get; set; } = null!;
 
+    [Column("email")]
+    public string Email { get; set; } = null!;
+
     [Column("pass", TypeName = "character varying")]
     public string Pass { get; set; } = null!;
 
     [Column("photo_path", TypeName = "character varying")]
     public string? PhotoPath { get; set; }
 
-    [Column("role_discriminator")]
+    [Column("role_discriminator", TypeName = "role_enum")]
     public string Role { get; set; } = null!;
 
-    [Column("gender")]
+    [Column("gender", TypeName = "gender_enum")]
     public string Gender { get; set; } = null!;
 
     [InverseProperty("Winner")]
