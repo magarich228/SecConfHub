@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using SecConfHub.Infrastructure.Context;
 using SecConfHub.Infrastructure.Models;
@@ -19,6 +20,8 @@ namespace SecConfHub.Desktop.ViewModels
         public AuthViewModel(IServiceProvider serviceProvider)
         {
             _db = serviceProvider.GetRequiredService<ConferenceDbContext>();
+
+            GenerateNewCaptcha();
         }
 
         [ObservableProperty]
@@ -30,9 +33,19 @@ namespace SecConfHub.Desktop.ViewModels
         [ObservableProperty]
         private string _errorMessage;
 
-        //public string IdNumber { get; set; } = null!;
-        //public string Password { get; set; } = null!;
-        //public string ErrorMessage { get; set; } = null!;
+
+        [ObservableProperty]
+        private string _captchaCode;
+
+        [ObservableProperty]
+        private string _userInput;
+
+        [ObservableProperty]
+        private bool _isValid;
+
+        [ObservableProperty]
+        private string _statusMessage;
+
 
         public bool TryAuth(out User? user)
         {
@@ -62,6 +75,29 @@ namespace SecConfHub.Desktop.ViewModels
             user = searchedUser;
 
             return true;
+        }
+
+        private void GenerateNewCaptcha()
+        {
+            var random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+            CaptchaCode = new string(Enumerable.Repeat(chars, 4)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+
+        [RelayCommand]
+        private void Validate()
+        {
+            IsValid = UserInput?.Equals(CaptchaCode, StringComparison.OrdinalIgnoreCase) ?? false;
+            StatusMessage = IsValid ? "Проверка пройдена!" : "Неверный код. Попробуйте снова.";
+
+            if (!IsValid)
+            {
+                GenerateNewCaptcha();
+                UserInput = string.Empty;
+            }
         }
     }
 }

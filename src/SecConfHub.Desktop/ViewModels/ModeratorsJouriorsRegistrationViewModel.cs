@@ -82,7 +82,7 @@ namespace SecConfHub.Desktop.ViewModels
 
                 _db.Users.Add(user);
 
-                // TODO: fix gerder type, role type
+                // TODO: fix pg gerder_enum type, role_enum type
                 //_db.SaveChanges();
 
                 return true;

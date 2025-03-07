@@ -1,12 +1,14 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using SecConfHub.Desktop.Services;
 using SecConfHub.Desktop.ViewModels;
 using SecConfHub.Desktop.Views;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SecConfHub.Desktop;
 
@@ -14,6 +16,8 @@ public partial class AuthWindow : Window
 {
     private readonly AuthViewModel _viewModel;
     private readonly IServiceProvider _services;
+
+    private int Attemps = 0;
 
     private readonly Dictionary<string, Type> _roleWindows = new Dictionary<string, Type>()
     {
@@ -51,6 +55,32 @@ public partial class AuthWindow : Window
         if (!_viewModel.TryAuth(out var user) &&
             user is null)
         {
+            Attemps++;
+
+            if (Attemps == 3)
+            {
+                var submitBtn = this.GetControl<Button>("submit");
+                Attemps = 0;
+
+                Dispatcher.UIThread.Post(() =>
+                {
+                    submitBtn.Content = "Блокировка";
+
+                    submitBtn.IsEnabled = false;
+                });
+
+                _ = Task.Run(async () =>
+                {
+                    await Task.Delay(10_000);
+
+                    Dispatcher.UIThread.Post(() =>
+                    {
+                        submitBtn.Content = "Войти";
+                        submitBtn.IsEnabled = true;
+                    });
+                });
+            }
+
             return;
         }
 
