@@ -17,7 +17,10 @@ public partial class AuthWindow : Window
 
     private readonly Dictionary<string, Type> _roleWindows = new Dictionary<string, Type>()
     {
-        { "organizer", typeof(OrganizerWindow) }
+        { "organizer", typeof(OrganizerWindow) },
+        { "member", typeof(MemberView) },
+        { "moderator", typeof(ModeratorView) },
+        { "jury", typeof(JuryView) },
     };
 
     public AuthWindow()

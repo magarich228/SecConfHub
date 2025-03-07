@@ -56,6 +56,10 @@ namespace SecConfHub.Desktop
             services.AddTransient<ModeratorsJouriorsRegistrationViewModel>();
             services.AddTransient<ModeratorsJouriousRegistrationWindow>();
 
+            services.AddTransient<ModeratorView>();
+            services.AddTransient<MemberView>();
+            services.AddTransient<JuryView>();
+
             return services.BuildServiceProvider();
         }
     }
