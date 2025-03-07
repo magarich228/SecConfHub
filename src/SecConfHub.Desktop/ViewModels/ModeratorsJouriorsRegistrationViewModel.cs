@@ -82,7 +82,8 @@ namespace SecConfHub.Desktop.ViewModels
 
                 _db.Users.Add(user);
 
-                _db.SaveChanges();
+                // TODO: fix gerder type, role type
+                //_db.SaveChanges();
 
                 return true;
             }

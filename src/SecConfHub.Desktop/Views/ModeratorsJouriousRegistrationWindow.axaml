@@ -6,7 +6,9 @@
 		mc:Ignorable="d" d:DesignWidth="1500" d:DesignHeight="700"
         x:Class="SecConfHub.Desktop.ModeratorsJouriousRegistrationWindow"
         x:DataType="vm:ModeratorsJouriorsRegistrationViewModel"
-		Title="ModeratorsJouriousRegistrationWindow">
+		Title="ModeratorsJouriousRegistrationWindow"
+		MinWidth="1000"
+		MinHeight="600">
 
 	<Design.DataContext>
 		<vm:ModeratorsJouriorsRegistrationViewModel/>
@@ -163,7 +165,8 @@
 				   Grid.Row="3"
 				   HorizontalAlignment="Center"
 				   TextElement.Foreground="Red"
-				   Margin="0,50,0,0"/>
+				   Margin="0,50,0,0"
+				   Width="300"/>
 
 	</Grid>
 

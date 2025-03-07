@@ -6,7 +6,9 @@
 		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="SecConfHub.Desktop.OrganizerWindow"
 		x:DataType="vm:OrganizerViewModel"
-        Title="OrganizerWindow">
+        Title="OrganizerWindow"
+		MinWidth="1000"
+		MinHeight="600">
 
 	<Design.DataContext>
 		<vm:AuthViewModel/>

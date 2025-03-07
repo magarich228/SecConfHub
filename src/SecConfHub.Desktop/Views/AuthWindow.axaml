@@ -6,7 +6,9 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="SecConfHub.Desktop.AuthWindow"
 		x:DataType="vm:AuthViewModel"
-        Title="Auth">
+        Title="Auth"
+		MinWidth="1000"
+		MinHeight="600">
 
 	<Design.DataContext>
 		<vm:AuthViewModel/>
